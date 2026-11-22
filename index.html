@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4f46e5">
+<title>Jídelníček MŠ Halasova</title>
+<style>
+:root{--primary:#4f46e5;--primary-light:#e0e7ff;--bg:#f3f4f6;--text:#1f2937;--muted:#6b7280;--green:#059669}
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);margin:0;padding:16px;line-height:1.5}
+.container{max-width:680px;margin:auto}
+header,.day-card,.status-box,.error-box{background:#fff;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 2px 8px #0000000d}
+header{text-align:center}
+h1{font-size:1.4rem;color:var(--primary);margin:0 0 8px}
+.date-range{display:inline-block;background:var(--primary-light);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:.9rem;font-weight:650}
+.meta{font-size:.8rem;color:var(--muted);margin-top:8px}
+.day-card{border:2px solid transparent}
+.day-card.today{background:#ecfdf5;border-color:#10b981}
+.day-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e7eb;padding-bottom:8px;margin-bottom:12px}
+.day-title{font-size:1.12rem;margin:0}
+.today-badge{background:var(--green);color:#fff;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:12px}
+.meal-row{margin:0 0 11px}
+.meal-row:last-child{margin-bottom:0}
+.meal-label{display:block;font-size:.78rem;font-weight:750;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.today .meal-label{color:#047857}
+.meal-text{margin:0}
+.meal-row.interactive{cursor:pointer;padding:8px 10px;margin:0 -10px 8px;border-radius:12px;transition:background-color .15s ease,transform .1s ease;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.meal-row.interactive:last-child{margin-bottom:0}
+.meal-row.interactive:hover{background:rgba(79,70,229,.06)}
+.meal-row.interactive:active{transform:scale(.99);background:rgba(79,70,229,.12)}
+.today .meal-row.interactive:hover{background:rgba(5,150,105,.08)}
+.today .meal-row.interactive:active{background:rgba(5,150,105,.15)}
+.meal-content{flex:1;min-width:0}
+.meal-img-hint{flex-shrink:0;font-size:.75rem;font-weight:650;color:var(--primary);background:var(--primary-light);padding:4px 9px;border-radius:10px;white-space:nowrap}
+.today .meal-img-hint{color:#047857;background:#d1fae5}
+.modal-backdrop{position:fixed;inset:0;background:rgba(17,24,39,.65);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:16px;z-index:1000}
+.modal-backdrop.open{display:flex}
+.modal-card{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:20px;box-shadow:0 20px 45px rgba(0,0,0,.28);position:relative;animation:popIn .18s ease-out;max-height:92vh;overflow-y:auto}
+@keyframes popIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+.modal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.modal-day-meal{font-size:.78rem;font-weight:750;text-transform:uppercase;color:var(--primary);letter-spacing:.03em}
+.modal-title{font-size:1.05rem;font-weight:700;color:var(--text);margin:2px 0 0;line-height:1.35}
+.modal-close{background:#f3f4f6;color:var(--text);border:0;width:34px;height:34px;border-radius:50%;font-size:1.1rem;font-weight:700;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#e5e7eb}
+.modal-art-box{background:#fffbeb;border:2px solid #fde68a;border-radius:16px;min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;overflow:hidden}
+.modal-art-box img,.modal-art-box svg{width:100%;max-height:290px;border-radius:12px;display:block}
+.kid-parts{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.kid-chip{background:#fff;border:1px solid #fcd34d;color:#78350f;border-radius:999px;padding:4px 10px;font-size:.82rem;font-weight:650}
+.modal-note{font-size:.76rem;color:var(--muted);margin:10px 0 0;text-align:center}
+.modal-actions{display:flex;gap:10px;margin-top:14px}
+.btn-secondary{flex:1;background:#eef2ff;color:var(--primary);border:0;padding:11px 14px;border-radius:12px;font-size:.9rem;font-weight:650;cursor:pointer}
+.btn-secondary:disabled{opacity:.55}
+.key-box{margin-top:12px;padding-top:12px;border-top:1px dashed #e5e7eb;font-size:.78rem;color:var(--muted)}
+.key-row{display:flex;gap:8px;margin-top:6px}
+.key-input{flex:1;min-width:0;border:1px solid #d1d5db;border-radius:10px;padding:8px 10px;font-size:.82rem}
+.btn-mini{background:#f3f4f6;color:var(--text);border:0;border-radius:10px;padding:8px 12px;font-size:.8rem;font-weight:650;cursor:pointer}
+.status-box{text-align:center;padding:30px 16px}
+.spinner{width:34px;height:34px;border:4px solid var(--primary-light);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;text-align:center}
+.btn-refresh{display:block;width:100%;background:var(--primary);color:#fff;border:0;padding:14px;font-size:1rem;font-weight:650;border-radius:12px;cursor:pointer;margin:16px 0}
+.btn-refresh:disabled{opacity:.6}
+.source-link{color:inherit;font-weight:650;display:inline-block;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:.78rem;margin:14px 0 24px}
+</style>
+</head>
+<body>
+<main class="container">
+<header><h1>🍽️ Jídelníček MŠ Halasova</h1><div id="date-range" class="date-range">Načítám termín…</div><div id="updated" class="meta">Načítám jídelníček…</div></header>
+<div id="content"><div class="status-box"><div class="spinner"></div>Načítám aktuální jídelníček…</div></div>
+<button id="refresh" class="btn-refresh" type="button">🔄 Aktualizovat jídelníček</button>
+<footer>Zdroj: <a href="https://www.mshalasova.cz/jidelnicek/" target="_blank" rel="noopener">web Mateřské školy Halasova</a> · Automatická aktualizace přes GitHub · Ťuknutím na jídlo zobrazíš obrázek pro děti</footer>
+</main>
+
+<div id="meal-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-top">
+      <div>
+        <div id="modal-day-meal" class="modal-day-meal"></div>
+        <h2 id="modal-title" class="modal-title"></h2>
+      </div>
+      <button id="modal-close" class="modal-close" type="button" aria-label="Zavřít">✕</button>
+    </div>
+    <div id="modal-art-box" class="modal-art-box"></div>
+    <p class="modal-note">Obrázek pro děti – pomáhá dětem poznat, co bude na talíři.</p>
+    <div class="modal-actions">
+      <button id="modal-regen" class="btn-secondary" type="button">🎨 Jiný obrázek</button>
+    </div>
+    <div class="key-box">
+      <summary style="list-style:none;cursor:pointer;font-weight:650">🔑 Volitelný Gemini API klíč (pro AI obrázky)</summary>
+      <div class="key-row">
+        <input id="api-key-input" class="key-input" type="password" placeholder="Vlož klíč AIza... (volitelné)">
+        <button id="api-key-save" class="btn-mini" type="button">Uložit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+const TARGET_URL='https://www.mshalasova.cz/jidelnicek/';
+const CACHE_KEY='ms-halasova-menu-v7';
+const IMG_CACHE_PREFIX='ms-halasova-img-v2:';
+const API_KEY_STORAGE='ms-halasova-gemini-key';
+const REFRESH_MS=30*60*1000;
+const MEALS=['Přesnídávka','Polévka','Oběd','Svačina'];
+const $=id=>document.getElementById(id);
+
+let activeMealInfo=null;
+let variantCounter=0;
+
+function normalize(s){return (s||'').replace(/\u00a0/g,' ').replace(/\s+/g,' ').trim()}
+function cleanMeal(s){
+  let t=(s||'').replace(/\u00a0/g,' ');
+  t=t.split(/(?:ALERGENY|ALERGÉNY|1\.\s*OBILOVINY|ZMĚNA\s+JÍDELNÍČKU|DOBRÚ\s+CHUŤ|DOBROU\s+CHUŤ|Mateřská\s+škola|Prohlášení\s+o\s+přístupnosti|Seznam\s+alergenů)/i)[0];
+  t=t.split(/\n\s*\n/)[0];
+  return normalize(t).replace(/\(?\s*A\s*:\s*[^)]*\)?/gi,'').replace(/\(\s*\d+(?:\s*,\s*\d+)*\s*\)/g,'').replace(/[|\s,;]+$/,'').trim();
+}
+function todayName(){return ['NEDĚLE','PONDĚLÍ','ÚTERÝ','STŘEDA','ČTVRTEK','PÁTEK','SOBOTA'][new Date().getDay()]}
+function extractDate(text){const m=text.match(/\b\d{1,2}\.\s*\d{1,2}\.\s*[-–]\s*\d{1,2}\.\s*\d{1,2}\.\s*\d{4}\b/);return m?m[0].replace(/\s+/g,' '):'Aktuální jídelníček'}
+function emptyDay(name){return {day:name,meals:{'Přesnídávka':'','Polévka':'','Oběd':'','Svačina':''}}}
+
+function parseMenu(doc){
+  doc.querySelectorAll('script,style,noscript,footer,nav').forEach(el=>el.remove());
+  const raw=(doc.body?.innerText||doc.body?.textContent||'').replace(/\u00a0/g,' ');
+  const date=extractDate(raw);
+  const text=raw.replace(/\r/g,'\n');
+  const dayRegex=/(PONDĚLÍ|ÚTERÝ|STŘEDA|ČTVRTEK|PÁTEK)\s*/giu;
+  const matches=[...text.matchAll(dayRegex)];
+  const days=[];
+  for(let i=0;i<matches.length;i++){
+    const day=matches[i][1].toLocaleUpperCase('cs-CZ');
+    if(days.some(x=>x.day===day)) continue;
+    const from=matches[i].index+matches[i][0].length;
+    const to=i+1<matches.length?matches[i+1].index:text.length;
+    const chunk=text.slice(from,to);
+    const item=emptyDay(day);
+    for(let j=0;j<MEALS.length;j++){
+      const label=MEALS[j];
+      const pos=chunk.toLocaleLowerCase('cs-CZ').indexOf(label.toLocaleLowerCase('cs-CZ'));
+      if(pos<0) continue;
+      const valueStart=pos+label.length;
+      let valueEnd=chunk.length;
+      for(let k=j+1;k<MEALS.length;k++){
+        const next=chunk.toLocaleLowerCase('cs-CZ').indexOf(MEALS[k].toLocaleLowerCase('cs-CZ'),valueStart);
+        if(next>=0 && next<valueEnd) valueEnd=next;
+      }
+      item.meals[label]=cleanMeal(chunk.slice(valueStart,valueEnd).replace(/^[\s|:–-]+/,'').replace(/[\s|]+$/,''));
+    }
+    if(Object.values(item.meals).some(Boolean)) days.push(item);
+  }
+  if(!days.length) throw new Error('Jídelníček se nepodařilo rozpoznat.');
+  return {date,days};
+}
+
+async function fetchLocalHtml(){
+  const response=await fetch('./menu.txt?t='+Date.now(),{cache:'no-store'});
+  if(!response.ok){
+    if(response.status===404) throw new Error('Soubor menu.txt zatím neexistuje. Spusť na GitHubu záložku Actions.');
+    throw new Error('Chyba při načítání dat (HTTP '+response.status+').');
+  }
+  const html=await response.text();
+  if(html.length<300 || !/PONDĚLÍ|ÚTERÝ|STŘEDA/i.test(html)) throw new Error('Stažený soubor zatím neobsahuje jídelníček.');
+  return html;
+}
+
+function render(menu,stale=false){
+  $('date-range').textContent=menu.date;
+  $('updated').textContent=(stale?'Uložený jídelníček · ':'Zobrazeno: ')+(menu.updated||'');
+  const host=$('content');host.replaceChildren();
+  for(const day of menu.days){const card=document.createElement('section');card.className='day-card'+(day.day===todayName()?' today':'');
+    const head=document.createElement('div');head.className='day-header';const title=document.createElement('h2');title.className='day-title';title.textContent=day.day.charAt(0)+day.day.slice(1).toLocaleLowerCase('cs-CZ');head.append(title);
+    if(day.day===todayName()){const badge=document.createElement('span');badge.className='today-badge';badge.textContent='Dnes';head.append(badge);}card.append(head);
+    for(const meal of MEALS){
+      const mealValue=day.meals[meal]||'';
+      const row=document.createElement('div');
+      const hasMeal=Boolean(mealValue && mealValue!=='—');
+      row.className='meal-row'+(hasMeal?' interactive':'');
+      const contentWrap=document.createElement('div');
+      contentWrap.className='meal-content';
+      const label=document.createElement('span');
+      label.className='meal-label';
+      label.textContent=({'Přesnídávka':'🥣 Přesnídávka','Polévka':'🍵 Polévka','Oběd':'🍲 Oběd','Svačina':'🍎 Svačina'})[meal];
+      const value=document.createElement('p');
+      value.className='meal-text';
+      value.textContent=mealValue||'—';
+      contentWrap.append(label,value);
+      row.append(contentWrap);
+      if(hasMeal){
+        const hint=document.createElement('span');
+        hint.className='meal-img-hint';
+        hint.textContent='🖼️ Obrázek';
+        row.append(hint);
+        row.addEventListener('click',()=>openMealImageModal(day.day,meal,mealValue));
+      }
+      card.append(row);
+    }
+    host.append(card);
+  }
+}
+
+function getEmojiForItem(part){
+  const p=part.toLocaleLowerCase('cs-CZ');
+  if(/čaj/.test(p)) return '🍵';
+  if(/kakao|bílá káva|mléko/.test(p)) return '🥛';
+  if(/rohlík|houska|žemle|bageta|chléb|chlebík|vánočka|mazanec|koláč|buchta|závin|croissant/.test(p)) return '🥖';
+  if(/nudle|špagety|těstoviny|makarony|kolínka|knedlík|rýže|kaše|krupice|ovesn/.test(p)) return '🍝';
+  if(/polévk|vývar|fazolov|bramboračk|zelňačk|gulášov|čočkov|rajsk|dýňov|pórkov/.test(p)) return '🥣';
+  if(/kuřec|maso|řízek|sekaná|karbanátek|ryba|treska|losos|tuňák|vepřov|hověz|párek|šunka|vejce/.test(p)) return '🍗';
+  if(/sýr|tvaroh|lučina|žervé|máslo|pomazánka|paštika|jogurt/.test(p)) return '🧀';
+  if(/ovoce|jabl|hrušk|banán|pomeranč|mandarink|jahod|borůvk|švestk|hrozn/.test(p)) return '🍎';
+  if(/zelenin|okurk|rajč|mrkev|paprik|ředkvičk|salát|zelí|zeleninka/.test(p)) return '🥕';
+  if(/med|marmelád|povidl|džem/.test(p)) return '🍯';
+  return '🍽️';
+}
+
+function splitFoodParts(mealText){
+  return normalize(mealText)
+    .split(/[,/]+|\ba\b|\bs\b|\bse\b|\bz\b|\bze\b/i)
+    .map(s=>normalize(s))
+    .filter(s=>s.length>1);
+}
+
+function buildKidIllustrationSvg(mealLabel,mealText,variant){
+  const parts=splitFoodParts(mealText);
+  const icons=parts.slice(0,4).map(getEmojiForItem);
+  if(!icons.length) icons.push(mealLabel==='Polévka'?'🥣':'🍽️');
+  const bgPalettes=[
+    ['#fef3c7','#fde68a','#f59e0b'],
+    ['#e0f2fe','#bae6fd','#0284c7'],
+    ['#dcfce7','#bbf7d0','#16a34a'],
+    ['#fce7f3','#fbcfe8','#db2777']
+  ];
+  const pal=bgPalettes[variant%bgPalettes.length];
+  const isSoup=mealLabel==='Polévka'||/polévk|vývar|fazolov|bramboračk/i.test(mealText);
+  const coords=[
+    [135,112],
+    [225,112],
+    [135,172],
+    [225,172]
+  ];
+  const emojiSvg=icons.map((em,idx)=>{
+    const [x,y]=coords[idx]||[180,142];
+    const size=icons.length===1?58:icons.length===2?46:38;
+    const cx=icons.length===1?180:x;
+    const cy=icons.length===1?142:y;
+    return `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" font-size="${size}">${em}</text>`;
+  }).join('');
+
+  return `<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${mealText.replace(/"/g,'&quot;')}">
+    <defs>
+      <linearGradient id="kidBg${variant}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${pal[0]}"/>
+        <stop offset="100%" stop-color="${pal[1]}"/>
+      </linearGradient>
+    </defs>
+    <rect width="360" height="220" rx="18" fill="url(#kidBg${variant})"/>
+    <circle cx="46" cy="40" r="14" fill="#fff" opacity=".65"/>
+    <circle cx="315" cy="44" r="18" fill="#fff" opacity=".55"/>
+    <circle cx="302" cy="185" r="12" fill="#fff" opacity=".5"/>
+    ${isSoup
+      ? `<ellipse cx="180" cy="144" rx="88" ry="52" fill="#fff" stroke="${pal[2]}" stroke-width="5"/>
+         <ellipse cx="180" cy="140" rx="70" ry="38" fill="#fef08a" opacity=".75"/>`
+      : `<circle cx="180" cy="142" r="68" fill="#fff" stroke="${pal[2]}" stroke-width="5"/>
+         <circle cx="180" cy="142" r="52" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>`
+    }
+    ${emojiSvg}
+    <rect x="18" y="12" width="112" height="28" rx="14" fill="#fff" opacity=".9"/>
+    <text x="74" y="26" text-anchor="middle" dominant-baseline="central" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#374151">${mealLabel.toLocaleUpperCase('cs-CZ')}</text>
+  </svg>`;
+}
+
+function getSavedApiKey(){
+  try{return (localStorage.getItem(API_KEY_STORAGE)||'').trim();}catch(_){return '';}
+}
+
+async function tryGeminiImage(mealLabel,mealText,apiKey){
+  const prompt=`Cute, friendly children's book illustration showing a neat kid-sized plate or bowl of kindergarten food: ${mealLabel} consisting of "${normalize(mealText)}". Warm soft lighting, cheerful colors, clean simple background, appetizing and child-friendly, no text or labels on the image.`;
+  const payload={
+    contents:[{parts:[{text:prompt}]}],
+    generationConfig:{responseModalities:['TEXT','IMAGE']}
+  };
+  const apiUrl=`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-image:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const response=await fetch(apiUrl,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  });
+  if(!response.ok) throw new Error('HTTP '+response.status);
+  const result=await response.json();
+  const base64Data=result?.candidates?.[0]?.content?.parts?.find(p=>p.inlineData)?.inlineData?.data;
+  if(!base64Data) throw new Error('Bez obrázku');
+  return `data:image/png;base64,${base64Data}`;
+}
+
+function renderKidFallback(artBox,mealLabel,mealText,variant){
+  artBox.innerHTML=buildKidIllustrationSvg(mealLabel,mealText,variant);
+  const parts=splitFoodParts(mealText);
+  if(parts.length){
+    const chips=document.createElement('div');
+    chips.className='kid-parts';
+    for(const part of parts){
+      const chip=document.createElement('span');
+      chip.className='kid-chip';
+      chip.textContent=`${getEmojiForItem(part)} ${part}`;
+      chips.append(chip);
+    }
+    artBox.append(chips);
+  }
+}
+
+async function loadAndShowModalImage(forceRegenerate=false){
+  if(!activeMealInfo) return;
+  const {mealLabel,mealText}=activeMealInfo;
+  if(forceRegenerate) variantCounter+=1;
+  const artBox=$('modal-art-box');
+  const regenBtn=$('modal-regen');
+  const cacheKey=IMG_CACHE_PREFIX+mealLabel.toLowerCase()+':'+normalize(mealText).toLowerCase();
+  const apiKey=getSavedApiKey();
+
+  if(!apiKey){
+    renderKidFallback(artBox,mealLabel,mealText,variantCounter);
+    return;
+  }
+
+  if(!forceRegenerate){
+    try{
+      const saved=localStorage.getItem(cacheKey);
+      if(saved){
+        artBox.replaceChildren();
+        const img=document.createElement('img');
+        img.src=saved;
+        img.alt=mealText;
+        artBox.append(img);
+        return;
+      }
+    }catch(_){}
+  }
+
+  regenBtn.disabled=true;
+  artBox.innerHTML='<div class="spinner"></div><div>Vytvářím obrázek pro děti…</div>';
+  try{
+    const src=await tryGeminiImage(mealLabel,mealText,apiKey);
+    try{localStorage.setItem(cacheKey,src);}catch(_){}
+    artBox.replaceChildren();
+    const img=document.createElement('img');
+    img.src=src;
+    img.alt=mealText;
+    artBox.append(img);
+  }catch(_){
+    renderKidFallback(artBox,mealLabel,mealText,variantCounter);
+  }finally{
+    regenBtn.disabled=false;
+  }
+}
+
+function openMealImageModal(dayNameUpper,mealLabel,mealText){
+  const formattedDay=dayNameUpper.charAt(0)+dayNameUpper.slice(1).toLocaleLowerCase('cs-CZ');
+  activeMealInfo={dayName:formattedDay,mealLabel,mealText};
+  $('modal-day-meal').textContent=`${formattedDay} · ${mealLabel}`;
+  $('modal-title').textContent=mealText;
+  $('api-key-input').value=getSavedApiKey();
+  $('meal-modal').classList.add('open');
+  loadAndShowModalImage(false);
+}
+
+function closeMealImageModal(){
+  $('meal-modal').classList.remove('open');
+  activeMealInfo=null;
+}
+
+$('api-key-save').addEventListener('click',()=>{
+  const val=$('api-key-input').value.trim();
+  try{
+    if(val) localStorage.setItem(API_KEY_STORAGE,val);
+    else localStorage.removeItem(API_KEY_STORAGE);
+  }catch(_){}
+  loadAndShowModalImage(true);
+});
+$('modal-close').addEventListener('click',closeMealImageModal);
+$('modal-regen').addEventListener('click',()=>loadAndShowModalImage(true));
+$('meal-modal').addEventListener('click',e=>{
+  if(e.target===$('meal-modal')) closeMealImageModal();
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && $('meal-modal').classList.contains('open')) closeMealImageModal();
+});
+
+async function loadMenu(){
+  const btn=$('refresh');
+  btn.disabled=true;
+  btn.textContent='⏳ Načítám…';
+  $('content').innerHTML='<div class="status-box"><div class="spinner"></div>Načítám aktuální jídelníček…</div>';
+  try{
+    const html=await fetchLocalHtml();
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const menu=parseMenu(doc);
+    menu.updated=new Date().toLocaleString('cs-CZ');
+    try{localStorage.setItem(CACHE_KEY,JSON.stringify(menu));}catch(_){}
+    render(menu,false);
+  }catch(error){
+    console.error(error);
+    let cached=null;
+    try{cached=localStorage.getItem(CACHE_KEY);}catch(_){}
+    if(cached){
+      try{
+        render(JSON.parse(cached),true);
+        const note=document.createElement('p');
+        note.className='meta';
+        note.textContent='Novější jídelníček se nepodařilo načíst. Zobrazuji poslední uložená data.';
+        $('content').prepend(note);
+      }catch(_){showError(error);}
+    }else showError(error);
+  }finally{
+    btn.disabled=false;
+    btn.textContent='🔄 Aktualizovat jídelníček';
+  }
+}
+
+function showError(error){
+  $('date-range').textContent='Načtení se nezdařilo';
+  $('updated').textContent='';
+  const box=document.createElement('div');
+  box.className='error-box';
+  const strong=document.createElement('strong');
+  strong.textContent='Jídelníček se nepodařilo načíst.';
+  const p=document.createElement('p');
+  p.textContent=error?.message||'Neznámá chyba.';
+  const a=document.createElement('a');
+  a.className='source-link';
+  a.href=TARGET_URL;
+  a.target='_blank';
+  a.rel='noopener';
+  a.textContent='Otevřít originální web školky ↗';
+  box.append(strong,p,a);
+  $('content').replaceChildren(box);
+}
+
+$('refresh').addEventListener('click',loadMenu);
+loadMenu();
+setInterval(()=>{if(document.visibilityState==='visible')loadMenu();},REFRESH_MS);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')loadMenu();});
+</script>
+</body>
+</html>
