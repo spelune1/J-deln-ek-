@@ -1,9 +1,8 @@
 name: Aktualizace jídelníčku
 ​on:
 schedule:
-# Spustí se automaticky každých 30 minut ve všední dny (6:00 - 16:00)
 - cron: '*/30 5-15 * * 1-5'
-workflow_dispatch: # Umožní ruční spuštění tlačítkem na GitHubu
+workflow_dispatch:
 ​permissions:
 contents: write
 ​jobs:
