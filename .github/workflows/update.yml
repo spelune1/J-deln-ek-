@@ -1,26 +1,24 @@
 name: Aktualizace jidelnicku
-
-on:
-  schedule:
-    - cron: '*/30 5-15 * * 1-5'
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  fetch-menu:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Stazeni repozitare
-        uses: actions/checkout@v4
-
-      - name: Stazeni stranky z webu skolky
-        run: curl -s -L -A "Mozilla/5.0" "https://www.mshalasova.cz/jidelnicek/" -o jidelnicek.html
-
-      - name: Ulozeni souboru do repozitare
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add jidelnicek.html
-          git diff --staged --quiet || (git commit -m "Aktualizace jidelnicku" && git push)
+​on:
+schedule:
+- cron: '*/30 5-15 * * 1-5'
+workflow_dispatch:
+​permissions:
+contents: write
+​jobs:
+fetch-menu:
+runs-on: ubuntu-latest
+steps:
+- name: Stazeni repozitare
+uses: actions/checkout@v4
+​- name: Stazeni stranky z webu skolky
+run: |
+rm -f jidelnicek.html
+touch .nojekyll
+curl -s -L -A "Mozilla/5.0" "https://www.mshalasova.cz/jidelnicek/" -o menu.txt
+​- name: Ulozeni souboru do repozitare
+run: |
+git config user.name "github-actions[bot]"
+git config user.email "github-actions[bot]@users.noreply.github.com"
+git add -A
+git diff --staged --quiet || (git commit -m "Aktualizace jidelnicku" && git push)
