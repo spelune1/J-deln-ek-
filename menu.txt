@@ -926,82 +926,82 @@ gtag("config", "GT-K8MDTQ8J");
 <table id="tablepress-5" class="tablepress tablepress-id-5 tbody-has-connected-cells">
 <tbody class="row-striping row-hover">
 <tr class="row-1">
-	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">23.11. - 27.11.2026</div></td>
+	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">30.11. - 04.12.2026</div></td>
 </tr>
 <tr class="row-2">
 	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">PONDĚLÍ</div></td>
 </tr>
 <tr class="row-3">
-	<td class="column-1">Přesnídávka</td><td class="column-2">ROHLÍK S PAŠTIKOU, ČAJ, KAKAO, ZELENINKA (A: 01, 07, )</td><td class="column-3"></td>
+	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, MÁSO, PLÁTKOVÝ SÝR, ČAJ,MLÉKO,OVOCE, ZELENINA  (A: 01, 07, )</td><td class="column-3"></td>
 </tr>
 <tr class="row-4">
-	<td class="column-1">Polévka</td><td class="column-2">ZELENINOVÝ VÝVAR (A:  09, )</td><td class="column-3"></td>
+	<td class="column-1">Polévka</td><td class="column-2">ZELENINOVÁ S MÁSLOVOU JÍŠKOU (A:  01, 07, 09, )</td><td class="column-3"></td>
 </tr>
 <tr class="row-5">
-	<td class="column-1">Oběd</td><td class="column-2">ČÍNSKÉ NUDLE S KUŘECÍM MASEM ,ČAJ (A: 01, 03, 06, )</td><td class="column-3"></td>
+	<td class="column-1">Oběd</td><td class="column-2">ŘECKÁ MUSAKA, TROPICO (A:  07, )</td><td class="column-3"></td>
 </tr>
 <tr class="row-6">
-	<td class="column-1">Svačina</td><td class="column-2">CHLÉB, SÝR ŽERVÉ, ČAJ (A: 01, 07,)</td><td class="column-3"></td>
+	<td class="column-1">Svačina</td><td class="column-2">SUŠENKA , ČAJ (A: 01, )</td><td class="column-3"></td>
 </tr>
 <tr class="row-7">
 	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">ÚTERÝ</div></td>
 </tr>
 <tr class="row-8">
-	<td class="column-1">Přesnídávka</td><td class="column-2">HOUSKA, MEDOVÉ MÁSLO, ČAJ, BÍLÁ KÁVA, OVOCE, ZELENINA(A: 01, 07 )</td><td class="column-3"></td>
+	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, TVAROHOVÁ POMAZÁNKA S RAJČATY, ČAJ, OVOCE, ZELENINA(A: 01, 07, 09 )</td><td class="column-3"></td>
 </tr>
 <tr class="row-9">
-	<td class="column-1">Polévka</td><td class="column-2">BÍLÁ FAZOLOVÁ (A: 01, )</td><td class="column-3"></td>
+	<td class="column-1">Polévka</td><td class="column-2">KVĚTÁKOVÁ S VEJCEM (A: 01, 09)</td><td class="column-3"></td>
 </tr>
 <tr class="row-10">
-	<td class="column-1">Oběd</td><td class="column-2">TRESKA NA MÁSLE, BRAMBORY, PŘÍLOHA, ČAJ (A: 04, 07 )</td><td class="column-3"></td>
+	<td class="column-1">Oběd</td><td class="column-2">PLNĚNÍ BRAMBOROVÉ KNEDLÍKY, ZELÍ, CIBULKA, ČAJ (A: 01, 03, 10 )</td><td class="column-3"></td>
 </tr>
 <tr class="row-11">
-	<td class="column-1">Svačina</td><td class="column-2">CHLÉB, TAVENÝ SÝR, ČAJ (A : 01, 07)</td><td class="column-3"></td>
+	<td class="column-1">Svačina</td><td class="column-2">CHLÉB S MÁSLEM, ČAJ  (A : 01, 07)</td><td class="column-3"></td>
 </tr>
 <tr class="row-12">
 	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">STŘEDA</div></td>
 </tr>
 <tr class="row-13">
-	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, MÁSLO, OKURKA, ČAJ, MLÉKO, OVOCE, ZELENINA ( A:01, 07, )</td><td class="column-3"></td>
+	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, TAVENÝ SÝR , ČAJ, KAKAO, OVOCE, ZELENINA ( A:01, 07, 09)</td><td class="column-3"></td>
 </tr>
 <tr class="row-14">
-	<td class="column-1">Polévka</td><td class="column-2">HOVĚZÍ VÝVAR , PÍSMENKA (A: 01, 03, 09  )</td><td class="column-3"></td>
+	<td class="column-1">Polévka</td><td class="column-2">ZELENINOVÁ S JÁTROVÝMI NOKY (A: 01, 03, 09  )</td><td class="column-3"></td>
 </tr>
 <tr class="row-15">
-	<td class="column-1">Oběd</td><td class="column-2">GRENADÝRSKÝ POCHOD, OKURKA, ČAJ ( A: 01, )</td><td class="column-3"></td>
+	<td class="column-1">Oběd</td><td class="column-2">VEPŘOVÝ GULÁŠ, TĚSTOVINY, SIRUP ( A: 01, 07, 09)</td><td class="column-3"></td>
 </tr>
 <tr class="row-16">
-	<td class="column-1">Svačina</td><td class="column-2">JOGURTOVÝ NÁPOJ, ROHLÍK  (A: 01, 07, )</td><td class="column-3"></td>
+	<td class="column-1">Svačina</td><td class="column-2">CHLÉB, DROŽĎOVÁ POMAZÁNKA S PAŽITKOU, ČAJ  (A: 01, 03, 07)</td><td class="column-3"></td>
 </tr>
 <tr class="row-17">
 	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">ČTVRTEK</div></td>
 </tr>
 <tr class="row-18">
-	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, TUŇÁKOVÁ POMAZÁNKA, ČAJ, MLÉKO, OVOCE, ZELENINA A: ( 01, 04  07, )</td><td class="column-3"></td>
+	<td class="column-1">Přesnídávka</td><td class="column-2">CHLÉB, ŠPENÁTOVÁ POMAZÁNKA, ČAJ, BÍLÁ KÁVA, OVOCE, ZELENINAA: ( 01, 07  09, )</td><td class="column-3"></td>
 </tr>
 <tr class="row-19">
-	<td class="column-1">Polévka</td><td class="column-2">ŠPENÁTOVÁ SE SMETANOU (07, )</td><td class="column-3"></td>
+	<td class="column-1">Polévka</td><td class="column-2">PREJTOVÁ SE ZELENINOVU  (01, 09)</td><td class="column-3"></td>
 </tr>
 <tr class="row-20">
-	<td class="column-1">Oběd</td><td class="column-2">VEPŘOVÉ MASO NA ČESNEKU, RÝŽE, TROPICO (A: 01,   )</td><td class="column-3"></td>
+	<td class="column-1">Oběd</td><td class="column-2">MAŠLIČKY S DRCENÝMI RAJČATY A BAZALKOU, ČAJ A: 01,  03, 10 )</td><td class="column-3"></td>
 </tr>
 <tr class="row-21">
-	<td class="column-1">Svačina</td><td class="column-2">CHLÉB, PAŽITKOVÁ POMAZÁNKA, ČAJ (A: 01, 07 )</td><td class="column-3"></td>
+	<td class="column-1">Svačina</td><td class="column-2">ROHLÍK, SÝR ŽERVÉ, ČAJ, KAKAO, OVOCE, ZELENINA ČAJ (A: 01, 07, 09 )</td><td class="column-3"></td>
 </tr>
 <tr class="row-22">
 	<td colspan="3" class="column-1"><div class="nadpis-jidelnicek">PÁTEK</div></td>
 </tr>
 <tr class="row-23">
-	<td class="column-1">Přesnídávka</td><td class="column-2">ROHLÍK, MÁSLO, VEPŘOVÁ ŠUNKA, ČAJ, GRANKO, OVOCE, ZELENINA  (A: 01, 07)</td><td class="column-3"></td>
+	<td class="column-1">Přesnídávka</td><td class="column-2">JOGURT OVOCNÝ ,  ROHLÍK, ČAJ, OVOCE, ZELENINA  (A: 01, 07, 09)</td><td class="column-3"></td>
 </tr>
 <tr class="row-24">
-	<td class="column-1">Polévka</td><td class="column-2">BRAMBORAČKA (A: 01, 03, 09, )</td><td class="column-3"></td>
+	<td class="column-1">Polévka</td><td class="column-2">PÓRKOVÁ SE SMETANOU (A: 07, 09,  )</td><td class="column-3"></td>
 </tr>
 <tr class="row-25">
-	<td class="column-1">Oběd</td><td class="column-2">KOPROVÁ OMÁČKA, VEJCE, KYNUTÝ  KNEDLÍK, ( A: 01, 03, 07, 10 )</td><td class="column-3"></td>
+	<td class="column-1">Oběd</td><td class="column-2">KUŘECÍ STEHNO , PEČENÉ BRAMBORY, MM, PŘÍLOHA, ČAJ ( A:  07 )</td><td class="column-3"></td>
 </tr>
 <tr class="row-26">
-	<td class="column-1">Svačina</td><td class="column-2">TROJHRÁNKY, PISTÁCIOVÉ MLÉKO  ( 01, 03, 07, 10 )</td><td class="column-3"></td>
+	<td class="column-1">Svačina</td><td class="column-2">OVOCNÁ MŘÍŽKA,  VANILKOVÉ MLÉKO ( A 01, 03, 09 )</td><td class="column-3"></td>
 </tr>
 </tbody>
 </table>
@@ -1105,7 +1105,7 @@ gtag("config", "GT-K8MDTQ8J");
 </tr>
 </tbody>
 </table>
-</div>
+<!-- #tablepress-6 from cache --></div>
 						</div>
 				</div>
 				</div>
@@ -2501,7 +2501,7 @@ window._googlesitekit.contentEvents = {"postID":990840,"isReadableSinglePost":fa
 </script>
 <script id="googlesitekit-events-provider-content-events-js" src="https://www.mshalasova.cz/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-content-events-90bacb156ab34fa090db.js" defer></script>
 <script id="cmplz-cookiebanner-js-extra">
-var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"32","version":"7.5.0","store_consent":"","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://www.mshalasova.cz/wp-json/complianz/v1/","locale":"lang=cs&locale=cs_CZ","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"30","cookie_path":"/","categories":{"statistics":"statistika","marketing":"marketing"},"tcf_active":"","placeholdertext":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah","css_file":"https://www.mshalasova.cz/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=32","page_links":{"eu":{"cookie-statement":{"title":"","url":"https://www.mshalasova.cz/pro-predskolaky/"},"privacy-statement":{"title":"Z\u00e1sady ochrany osobn\u00edch \u00fadaj\u016f","url":"https://www.mshalasova.cz/zasady-ochrany-osobnich-udaju/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah"};
+var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"32","version":"7.5.0","store_consent":"","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://www.mshalasova.cz/wp-json/complianz/v1/","locale":"lang=cs&locale=cs_CZ","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"30","cookie_path":"/","categories":{"statistics":"statistika","marketing":"marketing"},"tcf_active":"","placeholdertext":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah","css_file":"https://www.mshalasova.cz/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=32","page_links":{"eu":{"cookie-statement":{"title":"","url":"https://www.mshalasova.cz/rybicky-2026-2027/"},"privacy-statement":{"title":"Z\u00e1sady ochrany osobn\u00edch \u00fadaj\u016f","url":"https://www.mshalasova.cz/zasady-ochrany-osobnich-udaju/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah"};
 //# sourceURL=cmplz-cookiebanner-js-extra
 </script>
 <script defer id="cmplz-cookiebanner-js" src="https://www.mshalasova.cz/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1782129387"></script>
