@@ -1005,7 +1005,7 @@ gtag("config", "GT-K8MDTQ8J");
 </tr>
 </tbody>
 </table>
-</div>
+<!-- #tablepress-5 from cache --></div>
 						</div>
 				</div>
 				</div>
@@ -1105,7 +1105,7 @@ gtag("config", "GT-K8MDTQ8J");
 </tr>
 </tbody>
 </table>
-</div>
+<!-- #tablepress-6 from cache --></div>
 						</div>
 				</div>
 				</div>
@@ -2501,7 +2501,7 @@ window._googlesitekit.contentEvents = {"postID":990840,"isReadableSinglePost":fa
 </script>
 <script id="googlesitekit-events-provider-content-events-js" src="https://www.mshalasova.cz/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-content-events-90bacb156ab34fa090db.js" defer></script>
 <script id="cmplz-cookiebanner-js-extra">
-var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"32","version":"7.5.0","store_consent":"","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://www.mshalasova.cz/wp-json/complianz/v1/","locale":"lang=cs&locale=cs_CZ","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"30","cookie_path":"/","categories":{"statistics":"statistika","marketing":"marketing"},"tcf_active":"","placeholdertext":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah","css_file":"https://www.mshalasova.cz/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=32","page_links":{"eu":{"cookie-statement":{"title":"","url":"https://www.mshalasova.cz/fotogalerie/"},"privacy-statement":{"title":"Z\u00e1sady ochrany osobn\u00edch \u00fadaj\u016f","url":"https://www.mshalasova.cz/zasady-ochrany-osobnich-udaju/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah"};
+var complianz = {"prefix":"cmplz_","user_banner_id":"1","set_cookies":[],"block_ajax_content":"","banner_version":"32","version":"7.5.0","store_consent":"","do_not_track_enabled":"1","consenttype":"optin","region":"eu","geoip":"","dismiss_timeout":"","disable_cookiebanner":"","soft_cookiewall":"","dismiss_on_scroll":"","cookie_expiry":"365","url":"https://www.mshalasova.cz/wp-json/complianz/v1/","locale":"lang=cs&locale=cs_CZ","set_cookies_on_root":"","cookie_domain":"","current_policy_id":"30","cookie_path":"/","categories":{"statistics":"statistika","marketing":"marketing"},"tcf_active":"","placeholdertext":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah","css_file":"https://www.mshalasova.cz/wp-content/uploads/complianz/css/banner-{banner_id}-{type}.css?v=32","page_links":{"eu":{"cookie-statement":{"title":"","url":"https://www.mshalasova.cz/mikulasska-nadilka/"},"privacy-statement":{"title":"Z\u00e1sady ochrany osobn\u00edch \u00fadaj\u016f","url":"https://www.mshalasova.cz/zasady-ochrany-osobnich-udaju/"}}},"tm_categories":"1","forceEnableStats":"","preview":"","clean_cookies":"","aria_label":"Klepnut\u00edm p\u0159ijm\u011bte marketingov\u00e9 soubory cookie a povolte tento obsah"};
 //# sourceURL=cmplz-cookiebanner-js-extra
 </script>
 <script defer id="cmplz-cookiebanner-js" src="https://www.mshalasova.cz/wp-content/plugins/complianz-gdpr/cookiebanner/js/complianz.min.js?ver=1782129387"></script>
